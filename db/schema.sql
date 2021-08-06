@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS  dtrs_db;
+
+CREATE DATABASE dtrs_db;
