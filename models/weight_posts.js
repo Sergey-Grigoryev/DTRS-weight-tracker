@@ -14,7 +14,7 @@ weight_posts.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "user_id",
+        model: "users",
         key: "id",
       },
       date: {
