@@ -1,5 +1,81 @@
-<div>
+<div class="text-center">
     <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/10082/healthy-eating.jpg">
+
+<h1>Sign up</h1>
+<!-- Button trigger modal -->
+<button type="button" id="survey-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Sign Up
+</button>
 </div>
-<h1>Just a Few Steps to Create Your Very Own Fitness Profile</h1>
-<button>Take a Survey</button>
+<!-- Modal -->
+
+<div class="modal" tabindex="-1" id="surveymodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sign Up</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+<form class="row g-3">
+  <div class="col-md-6">
+    <label for="userfn" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="userfn">
+  </div>
+  <div class="col-md-6">
+    <label for="userln" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="userln">
+  </div>
+
+  <div class="col-md-3">
+    <label for="heightft" class="form-label">Height (ft/in)</label>
+    <input type="number" class="form-control" id="heightft" placeholder="5">
+  </div>
+   <div class="col-md-3">
+    <label for="heightin" class="form-label" style="opacity:0">sample</label>
+    <input type="number" class="form-control" id="heightin" placeholder="5">
+  </div>
+  <div class="col-md-6">
+    <label for="weight" class="form-label">Weight (lbs)</label>
+    <input type="number" class="form-control" id="inputAddress2" placeholder="110">
+  </div>
+  <div class="col-md-4">
+    <label for="age" class="form-label">Age</label>
+    <input type="number" class="form-control" id="age">
+  </div>
+  <div class="col-md-4">
+    <label for="sex" class="form-label">Sex</label>
+    <select id="sex" class="form-select">
+      <option selected>Choose...</option>
+      <option>Female</option>
+      <option>Male</option>
+      <option>Perfer Not To Say</option>
+    </select>
+  </div>
+  <div class="col-md-4">
+    <label for="targetweight" class="form-label">Target Weight</label>
+    <input type="number" class="form-control" id="targetweight">
+  </div>
+  <div class="col-md-6">
+    <label for="inputEmail4" id="useremail"class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" id="userpassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign up</button>
+  </div>
+</form>
+
+
+
+</div>
+
+
+
+
+
