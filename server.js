@@ -78,8 +78,21 @@ app.get('/login', (req, res) => {
 });
 
 
+
+app.get('/signup', (req, res) => {
+  // Send all of the books to 'index.handlebars' as an object
+  //
+  // YOUR CODE HERE
+  res.render('survey',{books})
+  //
+});
+
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, () => {
   console.log('App listening on PORT ' + PORT);
 });
+
+
+
+
