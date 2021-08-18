@@ -1,7 +1,5 @@
-<div class="text-center">
-    <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/10082/healthy-eating.jpg">
-
-<h1>Sign up</h1>
+<div id="hero" class="text-center">
+<h1></h1>
 <!-- Button trigger modal -->
 <button type="button" id="survey-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Sign Up
@@ -39,7 +37,7 @@
   </div>
   <div class="col-md-6">
     <label for="weight" class="form-label">Weight (lbs)</label>
-    <input type="number" class="form-control" id="inputAddress2" placeholder="110">
+    <input type="number" class="form-control" id="weight" placeholder="110">
   </div>
   <div class="col-md-4">
     <label for="age" class="form-label">Age</label>
@@ -60,14 +58,14 @@
   </div>
   <div class="col-md-6">
     <label for="inputEmail4" id="useremail"class="form-label">Email</label>
-    <input type="email" class="form-control" id="inputEmail4">
+    <input type="email" class="form-control" id="useremail">
   </div>
   <div class="col-md-6">
     <label for="inputPassword4" id="userpassword" class="form-label">Password</label>
-    <input type="password" class="form-control" id="inputPassword4">
+    <input type="password" class="form-control" id="userpassword">
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign up</button>
+    <button type="submit" class="btn btn-primary" onclick="signup()">Submit</button>
   </div>
 </form>
 
@@ -76,6 +74,17 @@
 </div>
 
 
+<style>
 
+#hero {
+    background-image: url("https://domf5oio6qrcr.cloudfront.net/medialibrary/10082/healthy-eating.jpg");
+    height: 500px;
+}
+
+h1 {
+    height:250px;
+}
+
+</style>
 
 

@@ -1,4 +1,41 @@
-<h1>Username</h1>
+<h1 style="text-align: center;">Overview</h1>
+
+<div class="text-center">
+<button type="button" id="log-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="logweightmodal">
+  Log Weight
+</button>
+</div>
+<div id="chartdiv"></div>				
+
+<div class="modal" tabindex="-1" id="logweightmodal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Log Weight</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+<form class="row g-3">
+  <div class="col-md-12">
+    <label for="userfn" class="form-label">Date</label>
+    <input type="text" id="selectdate">
+  </div>
+
+  <div class="col-md-12">
+    <label for="weight" class="form-label">Weight (lbs)</label>
+    <input type="number" class="form-control" id="todayweight" placeholder="110">
+  </div>
+
+  <div class="col-12">
+    <button type="button" class="btn btn-primary" onclick="logweight()" data-dismiss="logweightmodal">Save</button>
+  </div>
+</form>
+
+
+
+</div>
 
 <style>
 #chartdiv {
@@ -14,6 +51,14 @@
 
 <!-- Chart code -->
 <script>
+var loggedweight = 0;
+
+function logweight() {
+    var loggedweight = document.querySelector("#todayweight").value;
+    console.log(loggedweight)
+    var loggeddate = document.querySelector("#selectdate").value;
+    console.log(loggeddate)
+
 am4core.ready(function() {
 
 // Themes begin
@@ -22,50 +67,52 @@ am4core.useTheme(am4themes_animated);
 
 // Create chart instance
 var chart = am4core.create("chartdiv", am4charts.XYChart);
-chart.scrollbarX = new am4core.Scrollbar();
+//chart.scrollbarX = new am4core.Scrollbar();
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+var datestring = [];
+
+today = mm + '/' + dd + '/' + yyyy;
+
+for (let i = 1; i < 7; i++) {
+    datestring[i-1] = mm + '/' + (dd-i) + '/' + yyyy;
+} 
+
+
+
+
 
 // Add data
 chart.data = [{
-  "country": "USA",
-  "visits": 3025
+  "date": datestring[5],
+  "visits": 100
 }, {
-  "country": "China",
-  "visits": 1882
+  "date": datestring[4],
+  "visits": 101
 }, {
-  "country": "Japan",
-  "visits": 1809
+  "date": datestring[3],
+  "visits": 104
 }, {
-  "country": "Germany",
-  "visits": 1322
+  "date": datestring[2],
+  "visits": 100
 }, {
-  "country": "UK",
-  "visits": 1122
+  "date": datestring[1],
+  "visits": 102
 }, {
-  "country": "France",
-  "visits": 1114
+  "date": datestring[0],
+  "visits": 105
 }, {
-  "country": "India",
-  "visits": 984
-}, {
-  "country": "Spain",
-  "visits": 711
-}, {
-  "country": "Netherlands",
-  "visits": 665
-}, {
-  "country": "Russia",
-  "visits": 580
-}, {
-  "country": "South Korea",
-  "visits": 443
-}, {
-  "country": "Canada",
-  "visits": 441
-}];
+  "date": today,
+  "visits": loggedweight
+}, ];
 
 // Create axes
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-categoryAxis.dataFields.category = "country";
+categoryAxis.dataFields.category = "date";
+categoryAxis.autoRotateAngle = "180";
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.renderer.minGridDistance = 30;
 categoryAxis.renderer.labels.template.horizontalCenter = "right";
@@ -81,7 +128,7 @@ valueAxis.renderer.minWidth = 50;
 var series = chart.series.push(new am4charts.ColumnSeries());
 series.sequencedInterpolation = true;
 series.dataFields.valueY = "visits";
-series.dataFields.categoryX = "country";
+series.dataFields.categoryX = "date";
 series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
 series.columns.template.strokeWidth = 0;
 
@@ -104,8 +151,111 @@ series.columns.template.adapter.add("fill", function(fill, target) {
 // Cursor
 chart.cursor = new am4charts.XYCursor();
 
-}); // end am4core.ready()
-</script>
+}); 
+    
+}
 
-<!-- HTML -->
-<div id="chartdiv"></div>				
+am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.XYChart);
+//chart.scrollbarX = new am4core.Scrollbar();
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+var datestring = [];
+
+today = mm + '/' + dd + '/' + yyyy;
+
+for (let i = 1; i < 7; i++) {
+    datestring[i-1] = mm + '/' + (dd-i) + '/' + yyyy;
+} 
+
+
+
+
+
+// Add data
+chart.data = [{
+  "date": datestring[5],
+  "visits": 100
+}, {
+  "date": datestring[4],
+  "visits": 101
+}, {
+  "date": datestring[3],
+  "visits": 104
+}, {
+  "date": datestring[2],
+  "visits": 100
+}, {
+  "date": datestring[1],
+  "visits": 102
+}, {
+  "date": datestring[0],
+  "visits": 105
+}, {
+  "date": today,
+  "visits": loggedweight
+}, ];
+
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "date";
+categoryAxis.autoRotateAngle = "180";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.labels.template.horizontalCenter = "right";
+categoryAxis.renderer.labels.template.verticalCenter = "middle";
+categoryAxis.renderer.labels.template.rotation = 270;
+categoryAxis.tooltip.disabled = true;
+categoryAxis.renderer.minHeight = 110;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.minWidth = 50;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.sequencedInterpolation = true;
+series.dataFields.valueY = "visits";
+series.dataFields.categoryX = "date";
+series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+series.columns.template.strokeWidth = 0;
+
+series.tooltip.pointerOrientation = "vertical";
+
+series.columns.template.column.cornerRadiusTopLeft = 10;
+series.columns.template.column.cornerRadiusTopRight = 10;
+series.columns.template.column.fillOpacity = 0.8;
+
+// on hover, make corner radiuses bigger
+var hoverState = series.columns.template.column.states.create("hover");
+hoverState.properties.cornerRadiusTopLeft = 0;
+hoverState.properties.cornerRadiusTopRight = 0;
+hoverState.properties.fillOpacity = 1;
+
+series.columns.template.adapter.add("fill", function(fill, target) {
+  return chart.colors.getIndex(target.dataItem.index);
+});
+
+// Cursor
+chart.cursor = new am4charts.XYCursor();
+
+}); 
+
+
+
+
+
+
+
+
+</script>
+		
+
