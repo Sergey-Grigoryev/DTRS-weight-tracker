@@ -2,6 +2,7 @@
 // =============================================================
 const express = require('express');
 const exphbs = require('express-handlebars');
+const users = []
 
 // Sets up the Express App
 // =============================================================
@@ -52,6 +53,16 @@ const books = [
 // Routes
 // =============================================================
 
+app.get('/usersinfo', (req, res) => {
+  res.json(users)
+})
+
+app.post('/usersinfo',(req, res) => {
+  const user = { name: req.body.name, password: req.body.password}
+  users.push(user)
+  res.status(201).send()
+})
+
 app.get('/', (req, res) => {
   // Send all of the books to 'index.handlebars' as an object
   //
@@ -78,14 +89,6 @@ app.get('/login', (req, res) => {
 });
 
 
-
-app.get('/signup', (req, res) => {
-  // Send all of the books to 'index.handlebars' as an object
-  //
-  // YOUR CODE HERE
-  res.render('survey',{books})
-  //
-});
 
 // Starts the server to begin listening
 // =============================================================
