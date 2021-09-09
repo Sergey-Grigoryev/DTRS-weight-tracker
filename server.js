@@ -17,47 +17,16 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 // Data
 // =============================================================
-const books = [
-  {
-    title: 'Love You Forever',
-    read: false,
-    author: 'Robert Munsch'
-  },
-  {
-    title: 'The Giving Tree',
-    read: false,
-    author: 'Shel Silverstein'
-  },
-  {
-    title: 'Where the Red Fern Grows',
-    read: true,
-    author: 'Wilson Rawls'
-  },
-  {
-    title: 'The Fault in Our Stars',
-    read: true,
-    author: 'John Green'
-  },
-  {
-    title: 'Out of My Mind',
-    read: false,
-    author: 'Sally Engelfried'
-  },
-  {
-    title: 'Wonder',
-    read: false,
-    author: 'Barbara Schultz'
-  }
-];
+
 
 // Routes
 // =============================================================
 
-app.get('/usersinfo', (req, res) => {
+app.get('/users', (req, res) => {
   res.json(users)
 })
 
-app.post('/usersinfo',(req, res) => {
+app.post('/users',(req, res) => {
   const user = { name: req.body.name, password: req.body.password}
   users.push(user)
   res.status(201).send()
@@ -67,24 +36,17 @@ app.get('/', (req, res) => {
   // Send all of the books to 'index.handlebars' as an object
   //
   // YOUR CODE HERE
-  res.render('index', {books})
+  res.render('index')
   //
 });
 
-app.get('/user', (req, res) => {
-  // Send all of the books to 'index.handlebars' as an object
-  //
-  // YOUR CODE HERE
-  res.render('user_overview',{books})
-  //
-});
 
 
 app.get('/login', (req, res) => {
   // Send all of the books to 'index.handlebars' as an object
   //
   // YOUR CODE HERE
-  res.render('login',{books})
+  res.render('login')
   //
 });
 
