@@ -34,7 +34,11 @@ users.init({
       len: [4],
     },
   },
-  name: {
+  firstname: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  lastname: {
     type: DataTypes.STRING,
     allowNull: false,
   },
