@@ -4,23 +4,23 @@ const withAuth = require("../../utils/auth");
 
 const { weight_posts, users } = require("../../models");
 
-// router.get("/", (req, res) => {
-//   weight_posts
-//     .findAll({
-//       attributes: ["id", "user_id", "date", "weight"],
-//       include: [
-//         {
-//           model: users,
-//           attributes: ["username"],
-//         },
-//       ],
-//     })
-//     .then((weight_postsData) => res.json(weight_postsData))
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
+router.get("/", (req, res) => {
+  weight_posts
+    .findAll({
+      attributes: ["id", "user_id", "date", "weight"],
+      include: [
+        {
+          model: users,
+          attributes: ["username"],
+        },
+      ],
+    })
+    .then((weight_postsData) => res.json(weight_postsData))
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 router.get("/:id", (req, res) => {
   weight_posts
